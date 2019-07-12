@@ -1,5 +1,7 @@
 package lesson7;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -25,6 +27,7 @@ public class Main {
 
 
         Graph graph = new Graph(30);
+        Scanner sc = new Scanner(System.in);
 
         int[] v1 = new int[60];
         int[] v2 = new int[60];
@@ -35,8 +38,15 @@ public class Main {
             graph.addEdge(v1[i], v2[i]);
         }
 
-        BreadthFirstPath bfp = new BreadthFirstPath(graph,0);
-        System.out.println(bfp.hasPathTo(25));
-        System.out.println(bfp.pathTo(25));
+        System.out.println("Введите номер вершины начала пути от 0 до 29: ");
+        int initialVertex = sc.nextInt();
+        System.out.println("Введите номер вершины окончания пути от 0 до 29: ");
+        int endVertex = sc.nextInt();
+
+
+        BreadthFirstPath bfp = new BreadthFirstPath(graph, initialVertex);
+        System.out.println("Наличие пути: " + bfp.hasPathTo(endVertex));
+        System.out.println("Путь: " + bfp.pathTo(endVertex));
+        System.out.println("Расстояние: " + bfp.disTo(endVertex));
     }
 }
